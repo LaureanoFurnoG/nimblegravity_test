@@ -33,6 +33,7 @@ const JobApplication = () =>{
             setNotification({ type: response.status, message: response.statusText});
             setLoading(false)
         }catch(err: any){
+            setLoading(false)
             setNotification({ type: err.status, message: err.message });
         }
     }
