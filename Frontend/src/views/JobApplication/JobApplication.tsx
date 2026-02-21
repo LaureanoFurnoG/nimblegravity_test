@@ -1,6 +1,7 @@
 import { useEffect, useState, type BaseSyntheticEvent } from "react";
 import instanceAxios from "../../axios/axios";
 import JobCard from "../../components/JobCard/JobCard";
+import Notification from "../../components/Notifications/Notification";
 
 type CandidateResponse = {
     applicationId: string
@@ -17,7 +18,8 @@ type JobOffer ={
 const JobApplication = () =>{
     const [Candidate, setCandidateInformation] = useState<CandidateResponse>()
     const [Offers, setJobOffers] = useState<JobOffer[]>()
-
+    const [notification, setNotification] = useState({ type: 0, message: "" })
+    
     const handleSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
         getCandidateInformation(e.target.elements.email.value)
@@ -27,8 +29,9 @@ const JobApplication = () =>{
         try{
             const response = await instanceAxios.get(`/api/candidate/get-by-email?email=${email}`)
             setCandidateInformation(response.data)
+            setNotification({ type: response.status, message: response.statusText});
         }catch(err: any){
-            console.log(err)
+            setNotification({ type: err.status, message: err.message });
         }
     }
 
@@ -36,10 +39,9 @@ const JobApplication = () =>{
         const getListJobs = async () =>{
             try{
                 const response = await instanceAxios.get(`/api/jobs/get-list`)
-                console.log(response)
                 setJobOffers(response.data)
             }catch(err: any){
-                console.log(err)
+                setNotification({ type: err.status, message: err.message });
             }
         }
         getListJobs()
@@ -47,6 +49,7 @@ const JobApplication = () =>{
     
     return(
         <>
+            <Notification Type={notification.type} Message={notification.message} />
             <section className="flex w-full items-center justify-center flex-col mt-20">
                 <div className="flex justify-center w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5">
                     <form className="flex gap-5 flex-col sm:flex-row w-full" onSubmit={handleSubmit}>

@@ -1,3 +1,6 @@
 body{
   background-color: #242424;
 }
+.ant-notification-notice{
+  border: 1px solid white !important;
+}
