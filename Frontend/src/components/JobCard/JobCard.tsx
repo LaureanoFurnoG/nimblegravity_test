@@ -39,6 +39,7 @@ const JobCard = ({TitlePosition, IdJob, CandidateInformation}: ComponentProps) =
             const values = {
                 uuid: candidateInformation.uuid,
                 jobId: IdJob,
+                applicationId: candidateInformation.applicationId,
                 candidateId: candidateInformation.candidateId,
                 repoUrl: repoUrl
             }
