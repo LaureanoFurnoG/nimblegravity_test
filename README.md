@@ -36,8 +36,8 @@ Step-by-step instructions to get your development environment running:
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/LaureanoFurnoG/nimblegravity_test.git
+cd nimblegravity_test
 ```
 
 **2. Install dependencies:**
@@ -55,7 +55,7 @@ cp .env.example .env
 **4. Set your API base URL in the `.env` file:**
 
 ```env
-VITE_API_BASE_URL=https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net
+VITE_API_BASE_URL=your_api_base_url
 ```
 
 **5. Start the development server:**
