@@ -1,1 +1,23 @@
 @import "tailwindcss";
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 15px;
+    height: 20px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #121212;
+    border: 1px solid white;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background: #5cb35c;
+    border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(7, 82, 7);
+  }
+}

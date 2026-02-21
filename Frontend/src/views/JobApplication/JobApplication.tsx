@@ -54,7 +54,7 @@ const JobApplication = () =>{
                         <button type="submit" className="bg-[#5cb35c] p-3 rounded text-white w-25 hover:bg-[#386538] w-full sm:w-50 cursor-pointer transition-all duration-300">Enter</button>
                     </form>
                 </div>
-                <div className="w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5 flex flex-col gap-3 overflow-auto h-[60vh]">
+                <div className="w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5 flex flex-col gap-3 overflow-auto h-[60vh] scrollbar">
                     {Offers?.map((offer) =>(
                         <JobCard key={offer.id} IdJob={offer.id} TitlePosition={offer.title}/>
                     ))}
