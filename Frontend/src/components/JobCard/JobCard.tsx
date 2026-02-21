@@ -48,7 +48,7 @@ const JobCard = ({TitlePosition, IdJob, CandidateInformation}: ComponentProps) =
             setLoading(false)
         }catch(err: any){
             setLoading(false)
-            setNotification({ type: err.status, message: err.message, id: randomID() });
+            setNotification({ type: err.status, message: err.response.data.error, id: randomID() });
         }
     }
     return(

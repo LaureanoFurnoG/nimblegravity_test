@@ -38,7 +38,7 @@ const JobApplication = () =>{
             setLoading(false)
         }catch(err: any){
             setLoading(false)
-            setNotification({ type: err.status, message: err.message, id: randomID() });
+            setNotification({ type: err.status, message: err.response.data.error, id: randomID() });
         }
     }
 
@@ -48,7 +48,7 @@ const JobApplication = () =>{
                 const response = await instanceAxios.get(`/api/jobs/get-list`)
                 setJobOffers(response.data)
             }catch(err: any){
-                setNotification({ type: err.status, message: err.message, id: randomID() });
+                setNotification({ type: err.status, message: err.response.data.error, id: randomID() });
             }
         }
         getListJobs()
