@@ -41,10 +41,12 @@ const JobApplication = () =>{
     return(
         <>
             <section className="flex w-full items-center justify-center flex-col mt-20">
-                <form className="flex gap-5" onSubmit={handleSubmit}>
-                    <input name="email" type="email" id="emailInput" placeholder="example@gmail.com" className="rounded border-1 border-white h-auto placeholder-[#474747cf] w-100 p-3 bg-[#121212]" />
-                    <button type="submit" className="bg-[#5cb35c] p-3 rounded text-white w-25 hover:bg-[#386538] cursor-pointer transition-all duration-300">Enter</button>
-                </form>
+                <div className="flex justify-center w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5">
+                    <form className="flex gap-5 flex-col sm:flex-row w-full" onSubmit={handleSubmit}>
+                        <input name="email" type="email" id="emailInput" placeholder="example@gmail.com" className="rounded border-1 border-white h-auto placeholder-[#474747cf] w-[100%] sm:w-100 p-3 bg-[#121212]" />
+                        <button type="submit" className="bg-[#5cb35c] p-3 rounded text-white w-25 hover:bg-[#386538] w-full sm:w-50 cursor-pointer transition-all duration-300">Enter</button>
+                    </form>
+                </div>
                 <div className="w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5 flex flex-col gap-3 overflow-auto h-80">
                     <JobCard TitlePosition={"Test"}/>
                 </div>
