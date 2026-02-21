@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type BaseSyntheticEvent } from "react";
 import instanceAxios from "../../axios/axios";
+import JobCard from "../../components/JobCard/JobCard";
 
 type CandidateResponse = {
     applicationId: string
@@ -12,7 +13,7 @@ type CandidateResponse = {
 const JobApplication = () =>{
    const [Candidate, setCandidateInformation] = useState<CandidateResponse>()
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
         getCandidateInformation(e.target.elements.email.value)
     };
@@ -30,7 +31,6 @@ const JobApplication = () =>{
         const getListJobs = async () =>{
             try{
                 const response = await instanceAxios.get(`/api/jobs/get-list`)
-                console.log(response)
             }catch(err: any){
                 console.log(err)
             }
@@ -40,10 +40,13 @@ const JobApplication = () =>{
     
     return(
         <>
-        <form onSubmit={handleSubmit}>
-            <input name="email" type="email" id="emailInput" className="rounded" />
-            <button type="submit">Enter</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <input name="email" type="email" id="emailInput" className="rounded border-1" />
+                <button type="submit">Enter</button>
+            </form>
+            <div className="w-[100%] sm:w-[100%] md:w-[80%] lg:w-[60%] p-5 flex flex-col gap-3 overflow-auto h-80">
+                <JobCard TitlePosition={"Test"}/>
+            </div>
         </>
     )
 }
