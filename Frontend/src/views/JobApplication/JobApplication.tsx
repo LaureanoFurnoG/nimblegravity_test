@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import instanceAxios from "../../axios/axios";
 
 type CandidateResponse = {
@@ -25,6 +25,19 @@ const JobApplication = () =>{
             console.log(err)
         }
     }
+
+    useEffect(() =>{
+        const getListJobs = async () =>{
+            try{
+                const response = await instanceAxios.get(`/api/jobs/get-list`)
+                console.log(response)
+            }catch(err: any){
+                console.log(err)
+            }
+        }
+        getListJobs()
+    },[])
+    
     return(
         <>
         <form onSubmit={handleSubmit}>
